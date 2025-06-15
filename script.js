@@ -77,14 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to the Add Task button
     addButton.addEventListener('click', () => {
         console.log('Add button clicked');
-        addTask(taskInput.value);
+        addTask(taskInput.value.trim());
     });
 
     // Add event listener to the input field for Enter key press
     taskInput.addEventListener('keypress', (event) => {
         console.log('Key pressed:', event.key);
         if (event.key === 'Enter') {
-            addTask(taskInput.value);
+            addTask(taskInput.value.trim());
         }
     });
 });
