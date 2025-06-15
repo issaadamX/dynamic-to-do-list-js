@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to add a task to the list and optionally save to Local Storage
     function addTask(taskText, save = true) {
+        console.log('addTask called with:', taskText);
         // Trim the task text
         taskText = taskText.trim();
 
@@ -20,7 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Create a new list item
         const li = document.createElement('li');
-        li.textContent = taskText;
+
+        // Create a text node for the task text and append it
+        const taskTextNode = document.createTextNode(taskText);
+        li.appendChild(taskTextNode);
 
         // Create a remove button for the task
         const removeButton = document.createElement('button');
@@ -72,11 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listener to the Add Task button
     addButton.addEventListener('click', () => {
+        console.log('Add button clicked');
         addTask(taskInput.value);
     });
 
     // Add event listener to the input field for Enter key press
     taskInput.addEventListener('keypress', (event) => {
+        console.log('Key pressed:', event.key);
         if (event.key === 'Enter') {
             addTask(taskInput.value);
         }
